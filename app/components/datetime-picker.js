@@ -1,7 +1,9 @@
 export default Ember.Component.extend({
-    layout : Ember.Handlebars.compile('<div>{{input type="text" value=defaultDate}}</div>'),
+    layout : Ember.Handlebars.compile('<div>{{input type="text"}}</div>'),
 
-    attributeBindings : ['minDate', 'maxDate'],
+    // date : null,
+
+    attributeBindings : ['date', 'minDate', 'maxDate'],
 
     bound: undefined,
 
@@ -19,7 +21,7 @@ export default Ember.Component.extend({
     defaultDate: null,
 
     // make the `defaultDate` the initial selected value
-    setDefaultDate: false,
+    setDefaultDate: true,
 
     // first day of week (0: Sunday, 1: Monday etc)
     firstDay: 0,
@@ -61,24 +63,38 @@ export default Ember.Component.extend({
 
     didInsertElement : function() {
         var self = this,
-            opts = this.getProperties(['defaultDate', 'setDefaultDate', 'bound', 'position', 'reposition', 'format',
+            opts = this.getProperties(['date', 'setDefaultDate', 'bound', 'position', 'reposition', 'format',
                 'firstDay', 'minDate', 'maxDate', 'yearRange', 'showWeekNumber', 'yearSuffix', 'numberOfMonths',
                 'showTime', 'showSeconds', 'hours24format', 'minutesStep', 'secondsStep', 'mainCalendar']),
             i18n = this.get('i18n');
 
         this._super();
 
-        console.log(typeof i18n)
 
-        if (typeof i18n === 'object') {
+        if (typeof i18n === 'object' && i18n.months && i18n.weekdays && i18n.weekdaysShort) {
             opts.i18n = i18n;
         }
 
-        opts.field = this.$().find('input')[0]
+        opts.defaultDate = opts.date;
+        opts.field = this.$().find('input')[0];
 
-        console.log(opts)
+        opts.onSelect = function(date) {
+            self.set('date', date);
+            self.sendAction('onSelect', date);
+        }
+        opts.onOpen = function() {
+            self.sendAction('onOpen');
+        },
+        opts.onClose = function() {
+            self.sendAction('onClose');
+        }
+        opts.onDraw = function() {
+            self.sendAction('onDraw');
+        }
 
         this._picker = new Pikaday(opts);
+
+        this.$().find('input').val(this._picker.toString())
     },
 
     willDestroyElement : function() {

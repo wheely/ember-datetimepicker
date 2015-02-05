@@ -1,0 +1,10 @@
+.tb { display: table; }
+
+.row { display:table-row; }
+
+.row>div {
+    display:table-cell;
+    border:1px
+    solid #aaa;
+    padding: 20px
+}

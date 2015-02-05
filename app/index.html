@@ -5,6 +5,20 @@
 
     <link rel="stylesheet" href="/assets/pikaday.css">
 
+    <style>
+        .tb { display: table; width:100%; }
+
+        .row { display:table-row; }
+
+        .row>div {
+            display:table-cell;
+            border:1px
+            solid #aaa;
+            padding: 10px 20px
+        }
+
+    </style>
+
     <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/handlebars.js/1.3.0/handlebars.js"></script>
     <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/ember.js/1.5.1/ember.js"></script>
@@ -17,22 +31,48 @@
         console.log(Picker)
         window.App = Ember.Application.extend().create();
         App.ApplicationController = Em.Controller.extend({
-            today : new Date(),
 
-            minDate : new Date(2010, 1, 1),
+            date1 : new Date(),
 
-            maxDate : new Date(2020, 1, 1),
+            date2 : null,
 
-            i18nRu : {
-                previousMonth : 'Предыдущий месяц',
-                nextMonth     : 'Следующий месяц',
-                months        : ['Январь','Февраль','Март','Апрель','Май','Июнь','Июль','Август','Сентябрь','Октябрь','Ноябрь','Декабрь'],
-                weekdays      : ['Воскресенье', 'Понедельник','Вторник','Среда','Четверг','Пятница','Суббота'],
-                weekdaysShort : ['Вс','Пн','Вт','Ср','Чт','Пт','Сб']
+
+            pickerConf1 : {
+                // defaultDate : new Date(),
+                minDate : new Date(2010, 1, 1),
+                maxDate : new Date(2020, 1, 1),
+                position : 'bottom right',
+                i18n : {
+                    previousMonth : 'Предыдущий месяц',
+                    nextMonth     : 'Следующий месяц',
+                    months        : ['Январь','Февраль','Март','Апрель','Май','Июнь','Июль','Август','Сентябрь','Октябрь','Ноябрь','Декабрь'],
+                    weekdays      : ['Воскресенье', 'Понедельник','Вторник','Среда','Четверг','Пятница','Суббота'],
+                    weekdaysShort : ['Вс','Пн','Вт','Ср','Чт','Пт','Сб']
+                }
+            },
+
+            pickerConf2 : {
+                // defaultDate : new Date(),
+                minDate : new Date(2010, 1, 1),
+                maxDate : new Date(2020, 1, 1),
+                position : 'bottom right',
+                i18n : {
+                    previousMonth : 'Предыдущий месяц',
+                    nextMonth     : 'Следующий месяц',
+                    months        : ['１月','２月','３月','４月','５月','６月','７月','８月','９月','１０月','１１月','１２月'],
+                    weekdays      : ['日曜日', '月曜日','火曜日',　'水曜日', '木曜日','金曜日','土曜日'],
+                    weekdaysShort : ['日', '月','火',　'水', '木','金','土']
+                }
             },
 
             init: function() {
                 // console.log('wtf', App.__container__.lookup('component:datetime-picker'))
+            },
+
+            actions : {
+                dateChanged1 : function(date) {
+                    console.log('dateChanged1', date)
+                }
             }
         });
 

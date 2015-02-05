@@ -1,10 +1,37 @@
-application {{today}}
+<h2>Ember DateTimePicker</h2>
 
-{{datetime-picker
-    defaultDate=today
-    setDefaultDate=true
-    minDate=minDate
-    maxDate=maxDate
-    i18n=i18nRu
-}}
+<div class="tb">
+    <div class="row">
+        <div>
+            <h4>Example 1</h4>
+            {{datetime-picker
+                date=date1
+
+                minDate=pickerConf1.minDate
+                maxDate=pickerConf1.maxDate
+                i18n=pickerConf1.i18n
+                position=pickerConf1.position
+                onSelect="dateChanged1"
+            }}
+            {{date1}}
+        </div>
+        <div>
+            <h4>Example 1</h4>
+            {{datetime-picker
+                date=date2
+
+                minDate=pickerConf2.minDate
+                maxDate=pickerConf2.maxDate
+                i18n=pickerConf2.i18n
+                position=pickerConf2.position
+                onSelect="dateChanged1"
+            }}
+            {{date2}}
+        </div>
+        <div>
+
+        </div>
+    </div>
+</div>
+
 
