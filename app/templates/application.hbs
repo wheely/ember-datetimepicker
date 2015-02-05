@@ -1,5 +1,10 @@
 application {{today}}
 
-{{#datetime-picker defaultDate=today setDefaultDate=true}}
+{{datetime-picker
+    defaultDate=today
+    setDefaultDate=true
+    minDate=minDate
+    maxDate=maxDate
+    i18n=i18nRu
+}}
 
-{{/datetime-picker}}
