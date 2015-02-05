@@ -1,0 +1,22 @@
+{
+  "name": "ember-datetimepicker",
+  "version": "0.0.0",
+  "authors": [
+    "Dmitry Levashov <dio@std42.ru>"
+  ],
+  "moduleType": [
+    "es6"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "ember": "1.5.1",
+    "ember-datetimepicker" : "https://github.com/dio-el-claire/Pikaday.git#master"
+  }
+}
