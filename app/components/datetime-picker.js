@@ -1,18 +1,11 @@
 export default Ember.Component.extend({
-    layout : Ember.Handlebars.compile('<div>{{input type="text"}}</div>'),
+    layout : Ember.Handlebars.compile('{{input type="text"}}'),
 
-    // date : null,
+    classNames : ['datetime-picker'],
+
+    date : null,
 
     attributeBindings : ['date', 'minDate', 'maxDate'],
-
-    bound: undefined,
-
-    // position of the datepicker, relative to the field (default to bottom & left)
-    // ('bottom' & 'left' keywords are not used, 'top' & 'right' are modifier on the bottom/left position)
-    position: 'bottom left',
-
-    // automatically fit in the viewport even if it means repositioning from the position option
-    reposition: true,
 
     // the default output format for `.toString()` and `field` value
     format: 'YYYY-MM-DD',
@@ -63,21 +56,38 @@ export default Ember.Component.extend({
 
     didInsertElement : function() {
         var self = this,
-            opts = this.getProperties(['date', 'setDefaultDate', 'bound', 'position', 'reposition', 'format',
-                'firstDay', 'minDate', 'maxDate', 'yearRange', 'showWeekNumber', 'yearSuffix', 'numberOfMonths',
-                'showTime', 'showSeconds', 'hours24format', 'minutesStep', 'secondsStep', 'mainCalendar']),
-            i18n = this.get('i18n');
+            elem = this.$(),
+            input = elem.find('input'),
+            conf = ['date',
+                'format', 'firstDay', 'minDate', 'maxDate', 'yearRange',
+                'showWeekNumber', 'yearSuffix', 'numberOfMonths', 'showTime',
+                'showSeconds', 'hours24format', 'minutesStep', 'secondsStep', 'mainCalendar'],
+            i    = conf.length,
+            opts = {
+                field          : input[0],
+                container      : elem[0],
+                setDefaultDate : true
+            },
+            i18n = this.get('i18n'),
+            position = this.getWithDefault('position', ''),
+            name, value;
 
         this._super();
 
+        while (i--) {
+            name = conf[i];
+            value = this.get(name);
+            if (value !== void 0) {
+                opts[name] = value;
+            }
+        }
 
         if (typeof i18n === 'object' && i18n.months && i18n.weekdays && i18n.weekdaysShort) {
             opts.i18n = i18n;
         }
-
+        console.log('i18n', i18n)
         opts.defaultDate = opts.date;
-        opts.field = this.$().find('input')[0];
-
+        // console.log(opts)
         opts.onSelect = function(date) {
             self.set('date', date);
             self.sendAction('onSelect', date);
@@ -94,7 +104,13 @@ export default Ember.Component.extend({
 
         this._picker = new Pikaday(opts);
 
-        this.$().find('input').val(this._picker.toString())
+        input.val(this._picker.toString())
+
+        // console.log(position);
+        elem.addClass('picker-pos-' + (position.indexOf('right') !== -1 ? 'right' : 'left'))
+            .addClass('picker-pos-' + (position.indexOf('bottom') !== -1 ? 'bottom' : 'top'));
+
+
     },
 
     willDestroyElement : function() {
