@@ -3,35 +3,216 @@
 <div class="tb">
     <div class="row">
         <div>
-            <h4>Example 1</h4>
+            <h4>Default picker</h4>
+            <p>No options, no initial date</p>
             {{datetime-picker
-                date=date1
-
-                minDate=pickerConf1.minDate
-                maxDate=pickerConf1.maxDate
-                i18n=pickerConf1.i18n
-                position=pickerConf1.position
+                date=defaultConf.date
+                position=defaultConf.position
+                format=defaultConf.format
+                firstDay=defaultConf.firstDay
+                minDate=defaultConf.minDate
+                maxDate=defaultConf.maxDate
+                yearRange=defaultConf.yearRange
+                showWeekNumber=defaultConf.showWeekNumber
+                yearSuffix=defaultConf.yearSuffix
+                numberOfMonths=defaultConf.numberOfMonths
+                showTime=defaultConf.showTime
+                showSeconds=defaultConf.showSeconds
+                hours24format=defaultConf.hours24format
+                minutesStep=defaultConf.minutesStep
+                secondsStep=defaultConf.secondsStep
+                mainCalendar=defaultConf.mainCalendar
                 onSelect="dateChanged1"
+                class="add-class"
             }}
-            {{date1}}
+            <p>Date is: {{defaultConf.date}}</p>
         </div>
+        <div class="separator"></div>
         <div>
-            <h4>Example 1</h4>
+            <h4>Date and time picker</h4>
+            <p>24 hours format with initial date. Position:right</p>
             {{datetime-picker
-                date=date2
-
-                minDate=pickerConf2.minDate
-                maxDate=pickerConf2.maxDate
-                i18n=pickerConf2.i18n
-                position=pickerConf2.position
-                onSelect="dateChanged1"
+                date=dateTimeConf.date
+                position=dateTimeConf.position
+                format=dateTimeConf.format
+                firstDay=dateTimeConf.firstDay
+                minDate=dateTimeConf.minDate
+                maxDate=dateTimeConf.maxDate
+                yearRange=dateTimeConf.yearRange
+                showWeekNumber=dateTimeConf.showWeekNumber
+                yearSuffix=dateTimeConf.yearSuffix
+                numberOfMonths=dateTimeConf.numberOfMonths
+                showTime=dateTimeConf.showTime
+                showSeconds=dateTimeConf.showSeconds
+                hours24format=dateTimeConf.hours24format
+                minutesStep=dateTimeConf.minutesStep
+                secondsStep=dateTimeConf.secondsStep
+                mainCalendar=dateTimeConf.mainCalendar
             }}
-            {{date2}}
+            <p>Date is: {{dateTimeConf.date}}</p>
         </div>
+    </div>
+    <div class="row">
+        <div class="separator"></div>
+    </div>
+    <div class="row">
         <div>
+            <h4>Date and time picker</h4>
+            <p>24 hours format with initial date. Position:bottom</p>
+            {{datetime-picker
+                date=dateTime12HoursConf.date
+                position=dateTime12HoursConf.position
+                format=dateTime12HoursConf.format
+                firstDay=dateTime12HoursConf.firstDay
+                minDate=dateTime12HoursConf.minDate
+                maxDate=dateTime12HoursConf.maxDate
+                yearRange=dateTime12HoursConf.yearRange
+                showWeekNumber=dateTime12HoursConf.showWeekNumber
+                yearSuffix=dateTime12HoursConf.yearSuffix
+                numberOfMonths=dateTime12HoursConf.numberOfMonths
+                showTime=dateTime12HoursConf.showTime
+                showSeconds=dateTime12HoursConf.showSeconds
+                hours24format=dateTime12HoursConf.hours24format
+                minutesStep=dateTime12HoursConf.minutesStep
+                secondsStep=dateTime12HoursConf.secondsStep
+                mainCalendar=dateTime12HoursConf.mainCalendar
+            }}
+            <p>Date is: {{dateTime12HoursConf.date}}</p>
+        </div>
+        <div class="separator"></div>
+        <div>
+            <h4>Min and max date</h4>
+            <p>Setup minDate/maxDate. Position: bottom right</p>
+            {{datetime-picker
+                date=minmaxDateConf.date
+                position=minmaxDateConf.position
+                format=minmaxDateConf.format
+                firstDay=minmaxDateConf.firstDay
+                minDate=minmaxDateConf.minDate
+                maxDate=minmaxDateConf.maxDate
+                yearRange=minmaxDateConf.yearRange
+                showWeekNumber=minmaxDateConf.showWeekNumber
+                yearSuffix=minmaxDateConf.yearSuffix
+                numberOfMonths=minmaxDateConf.numberOfMonths
+                showTime=minmaxDateConf.showTime
+                showSeconds=minmaxDateConf.showSeconds
+                hours24format=minmaxDateConf.hours24format
+                minutesStep=minmaxDateConf.minutesStep
+                secondsStep=minmaxDateConf.secondsStep
+                mainCalendar=minmaxDateConf.mainCalendar
+            }}
+            <p>Date is: {{minmaxDateConf.date}}</p>
 
         </div>
     </div>
+    <div class="row">
+        <div class="separator"></div>
+    </div>
+    <div class="row">
+        <div>
+            <h4>Russian localization</h4>
+            <p>Show week number. Show seconds. Position: bottom right</p>
+            {{datetime-picker
+                date=i18nRuConf.date
+                position=i18nRuConf.position
+                format=i18nRuConf.format
+                firstDay=i18nRuConf.firstDay
+                minDate=i18nRuConf.minDate
+                maxDate=i18nRuConf.maxDate
+                yearRange=i18nRuConf.yearRange
+                showWeekNumber=i18nRuConf.showWeekNumber
+                yearSuffix=i18nRuConf.yearSuffix
+                numberOfMonths=i18nRuConf.numberOfMonths
+                showTime=i18nRuConf.showTime
+                showSeconds=i18nRuConf.showSeconds
+                hours24format=i18nRuConf.hours24format
+                minutesStep=i18nRuConf.minutesStep
+                secondsStep=i18nRuConf.secondsStep
+                mainCalendar=i18nRuConf.mainCalendar
+                i18n=i18nRuConf.i18n
+            }}
+            <p>Date is: {{i18nRuConf.date}}</p>
+        </div>
+        <div class="separator"></div>
+        <div>
+            <h4>Japanese localization</h4>
+            <p>Show seconds. Minutes step: 5. Seconds step:10.  Position: bottom right</p>
+            {{datetime-picker
+                date=i18nJpConf.date
+                position=i18nJpConf.position
+                format=i18nJpConf.format
+                firstDay=i18nJpConf.firstDay
+                minDate=i18nJpConf.minDate
+                maxDate=i18nJpConf.maxDate
+                yearRange=i18nJpConf.yearRange
+                showWeekNumber=i18nJpConf.showWeekNumber
+                yearSuffix=i18nJpConf.yearSuffix
+                numberOfMonths=i18nJpConf.numberOfMonths
+                showTime=i18nJpConf.showTime
+                showSeconds=i18nJpConf.showSeconds
+                hours24format=i18nJpConf.hours24format
+                minutesStep=i18nJpConf.minutesStep
+                secondsStep=i18nJpConf.secondsStep
+                mainCalendar=i18nJpConf.mainCalendar
+                i18n=i18nJpConf.i18n
+            }}
+            <p>Date is: {{i18nJpConf.date}}</p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="separator"></div>
+    </div>
+    <div class="row">
+        <div>
+            <h4>2 Month at once</h4>
+            <p>Also show "clear" button</p>
+            {{datetime-picker
+                date=months2Conf.date
+                position=months2Conf.position
+                format=months2Conf.format
+                firstDay=months2Conf.firstDay
+                minDate=months2Conf.minDate
+                maxDate=months2Conf.maxDate
+                yearRange=months2Conf.yearRange
+                showWeekNumber=months2Conf.showWeekNumber
+                yearSuffix=months2Conf.yearSuffix
+                numberOfMonths=months2Conf.numberOfMonths
+                showTime=months2Conf.showTime
+                showSeconds=months2Conf.showSeconds
+                hours24format=months2Conf.hours24format
+                minutesStep=months2Conf.minutesStep
+                secondsStep=months2Conf.secondsStep
+                mainCalendar=months2Conf.mainCalendar
+                clearButton=months2Conf.clearButton
+            }}
+            <p>Date is: {{months2Conf.date}}</p>
+        </div>
+        <div class="separator"></div>
+        <div>
+            <h4>2 Month at once</h4>
+            <p>Also show "clear" button</p>
+            {{datetime-picker
+                date=months2Conf.date
+                position=months2Conf.position
+                format=months2Conf.format
+                firstDay=months2Conf.firstDay
+                minDate=months2Conf.minDate
+                maxDate=months2Conf.maxDate
+                yearRange=months2Conf.yearRange
+                showWeekNumber=months2Conf.showWeekNumber
+                yearSuffix=months2Conf.yearSuffix
+                numberOfMonths=months2Conf.numberOfMonths
+                showTime=months2Conf.showTime
+                showSeconds=months2Conf.showSeconds
+                hours24format=months2Conf.hours24format
+                minutesStep=months2Conf.minutesStep
+                secondsStep=months2Conf.secondsStep
+                mainCalendar=months2Conf.mainCalendar
+                clearButton=months2Conf.clearButton
+                class="customized"
+            }}
+            <p>Date is: {{months2Conf.date}}</p>
+        </div>
+    </div>
 </div>
-
-
+&#D83D;
