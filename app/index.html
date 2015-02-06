@@ -6,17 +6,79 @@
     <link rel="stylesheet" href="/assets/pikaday.css">
 
     <style>
+        html { margin: 0; padding: 0; }
+        body { font-size: 100%; margin: 0; padding: 1.75em; font-family: 'Helvetica Neue', Arial, sans-serif; }
+
+        input {
+            height: 22px;
+            padding: 5px 10px;
+            font-size: 12px;
+            border-radius: 3px;
+            border:1px solid #aaa;
+            width:150px;
+        }
+
+        .datetime-picker-clear-allowed>input { width: 122px}
+
         .tb { display: table; width:100%; }
 
         .row { display:table-row; }
 
         .row>div {
+            width:50%;
             display:table-cell;
-            border:1px
-            solid #aaa;
-            padding: 10px 20px
+            border:1px solid #aaa;
+            padding: 10px 20px;
+            position:relative;
+            border-radius: 5px;
         }
 
+        .row>div.separator { width:5px; height: 5px; padding:5px; border:0 solid;}
+
+        .datetime-picker {
+            position: relative;
+            display:inline-block;
+            padding: 0;
+        }
+
+        .datetime-picker.picker-pos-right .pika-single { right:0; }
+        .datetime-picker.picker-pos-bottom .pika-single { bottom:100%; }
+
+        .datetime-picker>i {
+            position: absolute;
+            width:22px;
+            height: 22px;
+            top:50%;
+            right: 4px;
+            margin-top: -11px;
+            /*border:1px solid #111;*/
+            border-radius:11px;
+            background: #777;
+            color:#fff;
+            text-align:center;
+            font-size: 24px;
+            line-height: 18px;
+            cursor: pointer;
+            display: none;
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+
+            -webkit-transform: rotate(45deg); /* Chrome, Safari, Opera */
+            transform: rotate(45deg);
+        }
+        .datetime-picker-clear-allowed>input { padding-right: 28px;}
+        .datetime-picker-clear-allowed>i { display: block; }
+
+
+        .datetime-picker.customized:after {
+            content: '\UD83D\UDCC6';
+            position: absolute;
+            width:24px;
+            height: 24px;
+            left:0;
+            top:0;
+            border:1px solid #aaa;
+
+        }
     </style>
 
     <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
@@ -27,6 +89,8 @@
     <script type="text/javascript" src="./assets/ember.datetimepicker.min.js"></script>
     <script type="text/javascript">
 
+    'Unicode: U+1F4C6 (U+D83D U+DCC6), UTF-8: F0 9F 93 86'
+
         var Picker = require('ember-datetimepicker/components/datetime-picker');
         console.log(Picker)
         window.App = Ember.Application.extend().create();
@@ -36,6 +100,75 @@
 
             date2 : null,
 
+            defaultConf : {},
+
+            dateTimeConf : {
+                date        : new Date(),
+                showTime    : true,
+                position    : 'right'
+            },
+
+            dateTime12HoursConf : {
+                date          : new Date(),
+                showTime      : true,
+                hours24format : false,
+                position      : 'bottom'
+            },
+
+            minmaxDateConf : {
+                date          : new Date(),
+                showTime      : true,
+                hours24format : false,
+                position      : 'bottom right',
+                minDate       : new Date('2012-06-12'),
+                maxDate       : new Date('2016-06-12')
+            },
+
+            i18nRuConf : {
+                date          : new Date(),
+                showTime      : true,
+                showSeconds   : true,
+                position      : 'bottom',
+                firstDay      : 1,
+                showWeekNumber : true,
+                i18n : {
+                    previousMonth : 'Предыдущий месяц',
+                    nextMonth     : 'Следующий месяц',
+                    months        : ['Январь','Февраль','Март','Апрель','Май','Июнь','Июль','Август','Сентябрь','Октябрь','Ноябрь','Декабрь'],
+                    weekdays      : ['Воскресенье', 'Понедельник','Вторник','Среда','Четверг','Пятница','Суббота'],
+                    weekdaysShort : ['Вс','Пн','Вт','Ср','Чт','Пт','Сб']
+                }
+            },
+
+            i18nJpConf : {
+                date          : new Date(),
+                showTime      : true,
+                showSeconds   : true,
+                minutesStep   : 5,
+                secondsStep   : 10,
+                position      : 'bottom',
+                firstDay      : 1,
+
+                i18n : {
+                    previousMonth : '先月',
+                    nextMonth     : '来月',
+                    months        : ['１月','２月','３月','４月','５月','６月','７月','８月','９月','１０月','１１月','１２月'],
+                    weekdays      : ['日曜日', '月曜日','火曜日',　'水曜日', '木曜日','金曜日','土曜日'],
+                    weekdaysShort : ['日', '月','火',　'水', '木','金','土']
+                }
+            },
+
+            months2Conf : {
+                date        : new Date(),
+                showTime    : true,
+                position    : 'bottom',
+                numberOfMonths : 2,
+                clearButton : true
+            },
+
+            inlinePickerConf : {
+
+            },
 
             pickerConf1 : {
                 // defaultDate : new Date(),
