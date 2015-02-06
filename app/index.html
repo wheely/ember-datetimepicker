@@ -15,10 +15,10 @@
             font-size: 12px;
             border-radius: 3px;
             border:1px solid #aaa;
-            width:150px;
+            width:180px;
         }
 
-        .datetime-picker-clear-allowed>input { width: 122px}
+        .datetime-picker-clear-allowed>input { width: 132px}
 
         .tb { display: table; width:100%; }
 
@@ -32,6 +32,8 @@
             position:relative;
             border-radius: 5px;
         }
+
+        .row>div.logs { width: 100%}
 
         .row>div.separator { width:5px; height: 5px; padding:5px; border:0 solid;}
 
@@ -65,19 +67,30 @@
             -webkit-transform: rotate(45deg); /* Chrome, Safari, Opera */
             transform: rotate(45deg);
         }
-        .datetime-picker-clear-allowed>input { padding-right: 28px;}
+        .datetime-picker-clear-allowed>input { padding-right: 44px;}
         .datetime-picker-clear-allowed>i { display: block; }
 
-
+        .datetime-picker.customized>input { padding-left:30px;}
         .datetime-picker.customized:after {
-            content: '\UD83D\UDCC6';
+            content: '';
             position: absolute;
-            width:24px;
+            width:26px;
             height: 24px;
-            left:0;
-            top:0;
-            border:1px solid #aaa;
+            left:2px;
+            top:3px;
+            /*border:1px solid #aaa;*/
+            background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABkAAAAZCAYAAADE6YVjAAAAkElEQVRIx2NgwAQmQPweik0YiAMk62kA4hYobiDSEoJ6lgDxfzTcAMX/ScC49IDMBzNYaOQTFqj5EIKGcYLVEmoD+lpCazzMggsGEpDSOyU4AZ8l/9EUH4DiBrTMRowavJagZ7IGbN4nQc3AWUK1ZDsygosuqWs0CRNtyQMqJd8HA1ZAstDIAngdv4TGFdYSAG178S+YC6vSAAAAAElFTkSuQmCC') center center no-repeat;
+        }
 
+        .logs-container {
+            display: inline-block;
+            width:49%;
+            height: 86px;
+            vertical-align: top;
+        }
+        .logs-container:last-child>div { overflow:auto; height: 86px; border:1px solid #ccc; border-radius: 4px}
+        .logs-container>div>pre {
+            width: 300px
         }
     </style>
 
@@ -88,8 +101,6 @@
     <script type="text/javascript" src="./assets/pikaday.js"></script>
     <script type="text/javascript" src="./assets/ember.datetimepicker.min.js"></script>
     <script type="text/javascript">
-
-    'Unicode: U+1F4C6 (U+D83D U+DCC6), UTF-8: F0 9F 93 86'
 
         var Picker = require('ember-datetimepicker/components/datetime-picker');
         console.log(Picker)
@@ -105,7 +116,8 @@
             dateTimeConf : {
                 date        : new Date(),
                 showTime    : true,
-                position    : 'right'
+                position    : 'right',
+
             },
 
             dateTime12HoursConf : {
@@ -159,53 +171,53 @@
             },
 
             months2Conf : {
-                date        : new Date(),
+                date        : new Date('2014-01-01'),
                 showTime    : true,
                 position    : 'bottom',
                 numberOfMonths : 2,
                 clearButton : true
             },
 
+            customConf : {
+                date          : new Date(),
+                showTime      : true,
+                position      : 'right bottom'
+            },
+
+            loggerConf : {
+                date          : new Date(),
+                showTime      : true,
+                position      : 'bottom'
+            },
+
             inlinePickerConf : {
 
             },
 
-            pickerConf1 : {
-                // defaultDate : new Date(),
-                minDate : new Date(2010, 1, 1),
-                maxDate : new Date(2020, 1, 1),
-                position : 'bottom right',
-                i18n : {
-                    previousMonth : 'Предыдущий месяц',
-                    nextMonth     : 'Следующий месяц',
-                    months        : ['Январь','Февраль','Март','Апрель','Май','Июнь','Июль','Август','Сентябрь','Октябрь','Ноябрь','Декабрь'],
-                    weekdays      : ['Воскресенье', 'Понедельник','Вторник','Среда','Четверг','Пятница','Суббота'],
-                    weekdaysShort : ['Вс','Пн','Вт','Ср','Чт','Пт','Сб']
-                }
-            },
 
-            pickerConf2 : {
-                // defaultDate : new Date(),
-                minDate : new Date(2010, 1, 1),
-                maxDate : new Date(2020, 1, 1),
-                position : 'bottom right',
-                i18n : {
-                    previousMonth : 'Предыдущий месяц',
-                    nextMonth     : 'Следующий месяц',
-                    months        : ['１月','２月','３月','４月','５月','６月','７月','８月','９月','１０月','１１月','１２月'],
-                    weekdays      : ['日曜日', '月曜日','火曜日',　'水曜日', '木曜日','金曜日','土曜日'],
-                    weekdaysShort : ['日', '月','火',　'水', '木','金','土']
-                }
-            },
 
             init: function() {
                 // console.log('wtf', App.__container__.lookup('component:datetime-picker'))
             },
 
+            logs : [],
+
             actions : {
-                dateChanged1 : function(date) {
-                    console.log('dateChanged1', date)
-                }
+                onSelect : function(date) {
+                    this.get('logs').pushObject('"select" event fired'+date)
+                },
+
+                onOpen : function() {
+                    this.get('logs').pushObject('"open"  event fired');
+                },
+
+                onDraw : function() {
+                    this.get('logs').pushObject('"draw"  event fired');
+                },
+                onClose : function() {
+                    this.get('logs').pushObject('"close"  event fired');
+                },
+
             }
         });
 
