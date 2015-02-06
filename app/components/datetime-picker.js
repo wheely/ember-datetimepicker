@@ -1,9 +1,10 @@
 export default Ember.Component.extend({
-    layout : Ember.Handlebars.compile('{{input type="text"}}'),
+    layout : Ember.Handlebars.compile('{{input type="text"}}<i {{action "clear"}}>+</i>'),
 
     classNames : ['datetime-picker'],
 
-    date : null,
+    classNameBindings : ['clearButton:datetime-picker-clear-allowed'],
+
 
     attributeBindings : ['date', 'minDate', 'maxDate'],
 
@@ -50,9 +51,11 @@ export default Ember.Component.extend({
 
     // when numberOfMonths is used, this will help you to choose where the main calendar will be (default `left`, can be set to `right`)
     // only used for the first display or when a selected date is not visible
+    // in ember datetime-picker `left` means `top` and `right` means `bottom`
+    // maybe I'll fix it some day :)
     mainCalendar: 'left',
 
-    // i18n : {},
+    cleanButton : false,
 
     didInsertElement : function() {
         var self = this,
@@ -85,36 +88,48 @@ export default Ember.Component.extend({
         if (typeof i18n === 'object' && i18n.months && i18n.weekdays && i18n.weekdaysShort) {
             opts.i18n = i18n;
         }
-        console.log('i18n', i18n)
+
         opts.defaultDate = opts.date;
-        // console.log(opts)
+
         opts.onSelect = function(date) {
-            self.set('date', date);
+            self.set('date', date)._onSelect();
             self.sendAction('onSelect', date);
         }
         opts.onOpen = function() {
-            self.sendAction('onOpen');
+            self._onSelect();
+            self.sendAction('onOpen')
         },
         opts.onClose = function() {
+            self._onSelect();
             self.sendAction('onClose');
         }
         opts.onDraw = function() {
             self.sendAction('onDraw');
+            self._onDraw(this);
         }
 
         this._picker = new Pikaday(opts);
 
         input.val(this._picker.toString())
 
-        // console.log(position);
         elem.addClass('picker-pos-' + (position.indexOf('right') !== -1 ? 'right' : 'left'))
             .addClass('picker-pos-' + (position.indexOf('bottom') !== -1 ? 'bottom' : 'top'));
 
 
     },
 
+
+
     willDestroyElement : function() {
         this._picker.destroy();
+    },
+
+    actions : {
+        clear : function() {
+            console.log('clear')
+            this.set('date', '')
+            this._picker.setDate(void 0);;
+        }
     },
 
     _minDateDidChange : function() {
@@ -125,5 +140,20 @@ export default Ember.Component.extend({
         this._picker.setMaxDate(this.get('maxDate'));
     }.observes('maxDate'),
 
+    _onSelect : function() {
+
+    },
+
+    _onOpen : function() {
+
+    },
+
+    _onClose : function() {
+
+    },
+
+    _onDraw : function() {
+
+    },
 
 });
