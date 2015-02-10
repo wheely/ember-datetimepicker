@@ -17,6 +17,6 @@
   ],
   "dependencies": {
     "ember": "1.5.1",
-    "ember-datetimepicker" : "https://github.com/dio-el-claire/Pikaday.git#master"
+    "pikadaytime" : "1.0.1"
   }
 }
