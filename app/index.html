@@ -4,10 +4,10 @@
     <title></title>
 
     <link rel="stylesheet" href="/assets/pikaday.css">
-
+    <link rel="stylesheet" href="/assets/ember.datetimepicker.min.css">
     <style>
         html { margin: 0; padding: 0; }
-        body { font-size: 100%; margin: 0; padding: 1.75em; font-family: 'Helvetica Neue', Arial, sans-serif; }
+        body { font-size: 100%; margin: 0;  font-family: 'Helvetica Neue', Arial, sans-serif; }
 
         input {
             height: 22px;
@@ -102,132 +102,30 @@
     <script type="text/javascript" src="./assets/ember.datetimepicker.min.js"></script>
     <script type="text/javascript">
 
-        var Picker = require('ember-datetimepicker/components/datetime-picker');
-        console.log(Picker)
+        var Picker = require('ember-datetimepicker/components/datetime-picker'),
+            Controller = require('ember-datetimepicker/app').Controller;
+
         window.App = Ember.Application.extend().create();
-        App.ApplicationController = Em.Controller.extend({
+        App.ApplicationController = Controller.extend({});
 
-            date1 : new Date(),
-
-            date2 : null,
-
-            defaultConf : {},
-
-            dateTimeConf : {
-                date        : new Date(),
-                showTime    : true,
-                position    : 'right',
-
-            },
-
-            dateTime12HoursConf : {
-                date          : new Date(),
-                showTime      : true,
-                hours24format : false,
-                position      : 'bottom'
-            },
-
-            minmaxDateConf : {
-                date          : new Date(),
-                showTime      : true,
-                hours24format : false,
-                position      : 'bottom right',
-                minDate       : new Date('2012-06-12'),
-                maxDate       : new Date('2016-06-12')
-            },
-
-            i18nRuConf : {
-                date          : new Date(),
-                showTime      : true,
-                showSeconds   : true,
-                position      : 'bottom',
-                firstDay      : 1,
-                showWeekNumber : true,
-                i18n : {
-                    previousMonth : 'Предыдущий месяц',
-                    nextMonth     : 'Следующий месяц',
-                    months        : ['Январь','Февраль','Март','Апрель','Май','Июнь','Июль','Август','Сентябрь','Октябрь','Ноябрь','Декабрь'],
-                    weekdays      : ['Воскресенье', 'Понедельник','Вторник','Среда','Четверг','Пятница','Суббота'],
-                    weekdaysShort : ['Вс','Пн','Вт','Ср','Чт','Пт','Сб']
-                }
-            },
-
-            i18nJpConf : {
-                date          : new Date(),
-                showTime      : true,
-                showSeconds   : true,
-                minutesStep   : 5,
-                secondsStep   : 10,
-                position      : 'bottom',
-                firstDay      : 1,
-
-                i18n : {
-                    previousMonth : '先月',
-                    nextMonth     : '来月',
-                    months        : ['１月','２月','３月','４月','５月','６月','７月','８月','９月','１０月','１１月','１２月'],
-                    weekdays      : ['日曜日', '月曜日','火曜日',　'水曜日', '木曜日','金曜日','土曜日'],
-                    weekdaysShort : ['日', '月','火',　'水', '木','金','土']
-                }
-            },
-
-            months2Conf : {
-                date        : new Date('2014-01-01'),
-                showTime    : true,
-                position    : 'bottom',
-                numberOfMonths : 2,
-                clearButton : true
-            },
-
-            customConf : {
-                date          : new Date(),
-                showTime      : true,
-                position      : 'right bottom'
-            },
-
-            loggerConf : {
-                date          : new Date(),
-                showTime      : true,
-                position      : 'bottom'
-            },
-
-            inlinePickerConf : {
-
-            },
-
-
-
-            init: function() {
-                // console.log('wtf', App.__container__.lookup('component:datetime-picker'))
-            },
-
-            logs : [],
-
-            actions : {
-                onSelect : function(date) {
-                    this.get('logs').pushObject('"select" event fired'+date)
-                },
-
-                onOpen : function() {
-                    this.get('logs').pushObject('"open"  event fired');
-                },
-
-                onDraw : function() {
-                    this.get('logs').pushObject('"draw"  event fired');
-                },
-                onClose : function() {
-                    this.get('logs').pushObject('"close"  event fired');
-                },
-
-            }
-        });
-
-        // App.DatetimePickerComponent = Picker.default;
-        // console.log(Pikaday)
 
         </script>
 </head>
 
 <body>
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="https://github.com/dio-el-claire/ember-datetimepicker">View on GitHub</a>
 
+          <h1 id="project_title">Ember-datetimepicker</h1>
+          <h2 id="project_tagline">Ember datetime picker component based on Pikaday</h2>
+
+            <section id="downloads">
+              <a class="zip_download_link" href="https://github.com/dio-el-claire/ember-datetimepicker/zipball/master">Download this project as a .zip file</a>
+              <a class="tar_download_link" href="https://github.com/dio-el-claire/ember-datetimepicker/tarball/master">Download this project as a tar.gz file</a>
+            </section>
+        </header>
+    </div>
 </body>
 </html>
