@@ -116,9 +116,9 @@ var appJsAMD = concat(appJsAMD, {
 
 loader = pickFiles('vendor', {srcDir: '/', files: ['*.js'], destDir: '/assets'});
 
-var picker = pickFiles('bower_components/', {srcDir: '/ember-datetimepicker/', files: ['pikaday.js'], destDir: '/assets/'});
+var picker = pickFiles('bower_components/', {srcDir: '/pikadaytime/', files: ['pikaday.js'], destDir: '/assets/'});
 
-var pickerCss = pickFiles('bower_components/', {srcDir: '/ember-datetimepicker/css/', files: ['pikaday.css'], destDir: '/assets/'});
+var pickerCss = pickFiles('bower_components/', {srcDir: '/pikadaytime/css/', files: ['pikaday.css'], destDir: '/assets/'});
 
 /////////////////////////////////////////////////////////////////////
 // HTML files
