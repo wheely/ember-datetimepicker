@@ -61,18 +61,20 @@ export default Ember.Component.extend({
         var self = this,
             elem = this.$(),
             input = elem.find('input'),
+            ignoreContainer = this.get('ignoreContainer'),
             conf = ['date',
                 'format', 'firstDay', 'minDate', 'maxDate', 'yearRange',
-                'showWeekNumber', 'yearSuffix', 'numberOfMonths', 'showTime',
+                'showWeekNumber', 'yearSuffix', 'numberOfMonths', 'showTime', 'splitTimeView',
                 'showSeconds', 'hours24format', 'minutesStep', 'secondsStep', 'mainCalendar'],
             i    = conf.length,
             opts = {
                 field          : input[0],
-                container      : elem[0],
+                container      : ignoreContainer ? void 0 : elem[0],
                 setDefaultDate : true
             },
             i18n = this.get('i18n'),
             position = this.getWithDefault('position', ''),
+
             name, value;
 
         this._super();
@@ -115,6 +117,12 @@ export default Ember.Component.extend({
         elem.addClass('picker-pos-' + (position.indexOf('right') !== -1 ? 'right' : 'left'))
             .addClass('picker-pos-' + (position.indexOf('bottom') !== -1 ? 'bottom' : 'top'));
 
+        if (ignoreContainer) {
+            // @todo remove on destroy
+            $(window).resize(function() {
+                self._picker.adjustPosition();
+            });
+        }
 
     },
 
@@ -128,7 +136,7 @@ export default Ember.Component.extend({
         clear : function() {
             console.log('clear')
             this.set('date', '')
-            this._picker.setDate(void 0);;
+            this._picker.setDate(false);
         }
     },
 
