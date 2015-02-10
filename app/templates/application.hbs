@@ -111,7 +111,7 @@
     </div>
     <div class="row">
         <div>
-            <h4>2 Month at once</h4>
+            <h4>Display 2 Month at once</h4>
             <p>Also show "clear" button</p>
             {{datetime-picker
                 date=months2Conf.date
@@ -130,7 +130,7 @@
         <div class="separator"></div>
         <div>
             <h4>Picker customization</h4>
-            <p>Add icon on left side</p>
+            <p>Add icon on left side. Also show week number.</p>
             {{datetime-picker
                 date=customConf.date
                 position=customConf.position
@@ -139,6 +139,7 @@
                 hours24format=customConf.hours24format
                 minutesStep=customConf.minutesStep
                 secondsStep=customConf.secondsStep
+                showWeekNumber=customConf.showWeekNumber
                 clearButton=true
                 class="customized"
             }}

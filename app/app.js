@@ -68,7 +68,8 @@ export var Controller = Ember.Controller.extend({
     customConf : {
         date          : new Date(),
         showTime      : true,
-        position      : 'right bottom'
+        position      : 'right bottom',
+        showWeekNumber : true
     },
 
     loggerConf : {
