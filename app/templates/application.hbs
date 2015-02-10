@@ -1,10 +1,13 @@
-<h2>Ember DateTimePicker</h2>
+<div id="main_content_wrap" class="outer">
+    <section id="main_content" class="inner">
+
 
 <div class="tb">
     <div class="row">
         <div>
             <h4>Default picker</h4>
             <p>No options, no initial date</p>
+
             {{datetime-picker
                 date=defaultConf.date
             }}
@@ -32,7 +35,7 @@
     <div class="row">
         <div>
             <h4>Date and time picker</h4>
-            <p>24 hours format with initial date. Position:bottom</p>
+            <p>12 hours format with initial date. Position:bottom</p>
             {{datetime-picker
                 date=dateTime12HoursConf.date
                 position=dateTime12HoursConf.position
@@ -47,7 +50,7 @@
         <div class="separator"></div>
         <div>
             <h4>Min and max date</h4>
-            <p>Setup minDate/maxDate. 12 hours format.</p>
+            <p>Setup minDate/maxDate. Seconds selector.</p>
             {{datetime-picker
                 date=minmaxDateConf.date
                 position=minmaxDateConf.position
@@ -69,14 +72,14 @@
     </div>
     <div class="row">
         <div>
-            <h4>Russian localization</h4>
-            <p>Show week number. Show seconds. Position: bottom right</p>
+            <h4>Splitted hours and minutes selector</h4>
+            <p>Russian localization</p>
             {{datetime-picker
                 date=i18nRuConf.date
                 position=i18nRuConf.position
                 firstDay=i18nJpConf.firstDay
                 showTime=i18nRuConf.showTime
-                showSeconds=i18nRuConf.showSeconds
+                splitTimeView=i18nRuConf.splitTimeView
                 hours24format=i18nRuConf.hours24format
                 minutesStep=i18nRuConf.minutesStep
                 secondsStep=i18nRuConf.secondsStep
@@ -87,14 +90,14 @@
         <div class="separator"></div>
         <div>
             <h4>Japanese localization</h4>
-            <p>Show seconds. Minutes step: 5. Seconds step:10.  Position: bottom right</p>
+            <p>Minutes step: 5. Position: bottom right</p>
             {{datetime-picker
                 date=i18nJpConf.date
                 position=i18nJpConf.position
                 format=i18nJpConf.format
                 firstDay=i18nJpConf.firstDay
                 showTime=i18nJpConf.showTime
-                showSeconds=i18nJpConf.showSeconds
+                splitTimeView=i18nRuConf.splitTimeView
                 hours24format=i18nJpConf.hours24format
                 minutesStep=i18nJpConf.minutesStep
                 secondsStep=i18nJpConf.secondsStep
@@ -120,6 +123,7 @@
                 minutesStep=months2Conf.minutesStep
                 secondsStep=months2Conf.secondsStep
                 clearButton=months2Conf.clearButton
+                ignoreContainer=true
             }}
             <p>Date is: {{months2Conf.date}}</p>
         </div>
@@ -186,6 +190,8 @@
     </div>
 </div>
 
+</div>
+</section>
 
 
 
