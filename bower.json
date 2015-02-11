@@ -17,6 +17,6 @@
   ],
   "dependencies": {
     "ember": "1.5.1",
-    "pikadaytime" : "1.0.1"
+    "pikadaytime" : "1.0.3"
   }
 }
