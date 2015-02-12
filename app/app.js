@@ -20,8 +20,8 @@ export var Controller = Ember.Controller.extend({
         showTime      : true,
         showSeconds   : true,
         position      : 'bottom right',
-        minDate       : new Date('2012-06-12'),
-        maxDate       : new Date('2016-06-12')
+        minDate       : new Date('2012-06-12 14:00'),
+        maxDate       : new Date('2016-06-12 14:00')
     },
 
     i18nRuConf : {

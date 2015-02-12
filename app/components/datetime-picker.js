@@ -1,4 +1,6 @@
-export default Ember.Component.extend({
+export default
+
+Ember.DatetimepickerComponent = Ember.Component.extend({
     layout : Ember.Handlebars.compile('{{input type="text"}}<i {{action "clear"}}>+</i>'),
 
     classNames : ['datetime-picker'],
@@ -118,10 +120,8 @@ export default Ember.Component.extend({
             .addClass('picker-pos-' + (position.indexOf('bottom') !== -1 ? 'bottom' : 'top'));
 
         if (ignoreContainer) {
-            // @todo remove on destroy
-            $(window).resize(function() {
-                self._picker.adjustPosition();
-            });
+            this._resize = this._resize.bind(this);
+            $(window).on('resize', this._resize);
         }
 
     },
@@ -130,11 +130,11 @@ export default Ember.Component.extend({
 
     willDestroyElement : function() {
         this._picker.destroy();
+        $(window).off('resize', this._resize);
     },
 
     actions : {
         clear : function() {
-            console.log('clear')
             this.set('date', '')
             this._picker.setDate(false);
         }
@@ -163,5 +163,11 @@ export default Ember.Component.extend({
     _onDraw : function() {
 
     },
+
+    _resize : function() {
+        if (this._picker) {
+            this._picker.adjustPosition();
+        }
+    }
 
 });
