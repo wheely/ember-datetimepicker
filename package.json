@@ -1,12 +1,12 @@
 {
   "name": "ember-datetimepicker",
-  "version": "1.0.0",
-  "description": "",
+  "version": "0.1.1",
+  "description": "Ember datetimepicker based on pikadaytime",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
+  "author": "Dmitry (dio) Levashov <dio@std42.ru>",
   "license": "MIT",
   "dependencies": {
     "broccoli-bower": "^0.2.1",

@@ -1,8 +1,8 @@
 {
   "name": "ember-datetimepicker",
-  "version": "0.0.1",
+  "version": "0.1.1",
   "authors": [
-    "Dmitry Levashov <dio@std42.ru>"
+    "Dmitry (dio) Levashov <dio@std42.ru>"
   ],
   "moduleType": [
     "es6"
