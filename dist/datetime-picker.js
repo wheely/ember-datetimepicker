@@ -185,5 +185,5 @@ Ember.onLoad('Ember.Application', function(Application) {
     });
 });
 
-export default Picker;
+// export default Picker;
 
