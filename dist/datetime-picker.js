@@ -19,6 +19,8 @@ Ember.DatetimepickerComponent = Ember.Component.extend({
     // make the `defaultDate` the initial selected value
     setDefaultDate: true,
 
+    defaultText : '',
+
     // first day of week (0: Sunday, 1: Monday etc)
     firstDay: 0,
 
@@ -64,7 +66,7 @@ Ember.DatetimepickerComponent = Ember.Component.extend({
             elem = this.$(),
             input = elem.find('input'),
             ignoreContainer = this.get('ignoreContainer'),
-            conf = ['date',
+            conf = ['date', 'defaultText',
                 'format', 'firstDay', 'minDate', 'maxDate', 'yearRange',
                 'showWeekNumber', 'yearSuffix', 'numberOfMonths', 'showTime', 'splitTimeView',
                 'showSeconds', 'hours24format', 'minutesStep', 'secondsStep', 'mainCalendar'],
@@ -96,6 +98,7 @@ Ember.DatetimepickerComponent = Ember.Component.extend({
         opts.defaultDate = opts.date;
 
         opts.onSelect = function(date) {
+            console.log('date', date)
             self.set('date', date)._onSelect();
             self.sendAction('onSelect', date);
         }
