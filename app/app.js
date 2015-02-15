@@ -1,5 +1,5 @@
 export var Controller = Ember.Controller.extend({
-    defaultConf : {},
+    defaultConf : {defaultText : 'Select date'},
 
     dateTimeConf : {
         date        : new Date(),
@@ -63,6 +63,7 @@ export var Controller = Ember.Controller.extend({
         position    : 'bottom',
         numberOfMonths : 2,
         clearButton : true,
+        defaultText : 'No date'
     },
 
     customConf : {
