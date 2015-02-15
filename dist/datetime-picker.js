@@ -98,7 +98,6 @@ Ember.DatetimepickerComponent = Ember.Component.extend({
         opts.defaultDate = opts.date;
 
         opts.onSelect = function(date) {
-            console.log('date', date)
             self.set('date', date)._onSelect();
             self.sendAction('onSelect', date);
         }
@@ -117,7 +116,7 @@ Ember.DatetimepickerComponent = Ember.Component.extend({
 
         this._picker = new Pikaday(opts);
 
-        input.val(this._picker.toString())
+        // input.val(this._picker.toString())
 
         elem.addClass('picker-pos-' + (position.indexOf('right') !== -1 ? 'right' : 'left'))
             .addClass('picker-pos-' + (position.indexOf('bottom') !== -1 ? 'bottom' : 'top'));
@@ -139,7 +138,7 @@ Ember.DatetimepickerComponent = Ember.Component.extend({
     actions : {
         clear : function() {
             this.set('date', '')
-            this._picker.setDate(false);
+            this._picker.setDate(null);
         }
     },
 
