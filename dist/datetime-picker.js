@@ -137,10 +137,24 @@ Ember.DatetimepickerComponent = Ember.Component.extend({
 
     actions : {
         clear : function() {
-            this.set('date', '')
+            this.set('date', null);
             this._picker.setDate(null);
         }
     },
+
+    isDate : function(obj) {
+        return (/Date/).test(Object.prototype.toString.call(obj)) && !isNaN(obj.getTime());
+    },
+
+    _dateDidChange : function() {
+        var date       = this.get('date'),
+            pickerDate = this._picker.getDate();
+
+        if (this.isDate(date) && this.isDate(pickerDate) && date.getTime() === pickerDate.getTime()) {
+            return;
+        }
+        this._picker.setDate(date, true);
+    }.observes('date'),
 
     _minDateDidChange : function() {
         this._picker.setMinDate(this.get('minDate'));
