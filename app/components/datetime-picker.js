@@ -78,7 +78,7 @@ Ember.DatetimepickerComponent = Ember.Component.extend({
             },
             i18n = this.get('i18n'),
             position = this.getWithDefault('position', ''),
-
+            inputClass = this.get('inputClass'),
             name, value;
 
         this._super();
@@ -116,7 +116,9 @@ Ember.DatetimepickerComponent = Ember.Component.extend({
 
         this._picker = new Pikaday(opts);
 
-        // input.val(this._picker.toString())
+        if (inputClass) {
+            this.$().find('input').addClass(inputClass);
+        }
 
         elem.addClass('picker-pos-' + (position.indexOf('right') !== -1 ? 'right' : 'left'))
             .addClass('picker-pos-' + (position.indexOf('bottom') !== -1 ? 'bottom' : 'top'));
