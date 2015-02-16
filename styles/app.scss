@@ -15,6 +15,7 @@ table.pika-table { margin-bottom: 0 !important}
 .datetime-picker.picker-pos-bottom .pika-single { bottom:100%; }
 
 .datetime-picker>i {
+    display:none;
     position: absolute;
     width:24px;
     height: 24px;
