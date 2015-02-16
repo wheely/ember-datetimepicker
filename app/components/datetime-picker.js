@@ -1,7 +1,7 @@
 var Picker =
 
 Ember.DatetimepickerComponent = Ember.Component.extend({
-    layout : Ember.Handlebars.compile('{{input type="text"}}<i {{action "clear"}}>+</i>'),
+    layout : Ember.Handlebars.compile('{{input type="text"}}<i {{action "clear"}}></i>'),
 
     classNames : ['datetime-picker'],
 
