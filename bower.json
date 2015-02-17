@@ -1,6 +1,6 @@
 {
   "name": "ember-datetimepicker",
-  "version": "0.1.15",
+  "version": "0.1.16",
   "authors": [
     "Dmitry (dio) Levashov <dio@std42.ru>"
   ],
@@ -17,6 +17,6 @@
   ],
   "dependencies": {
     "ember": "1.5.1",
-    "pikadaytime" : "1.0.15"
+    "pikadaytime" : "1.0.16"
   }
 }
