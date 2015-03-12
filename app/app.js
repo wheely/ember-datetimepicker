@@ -80,7 +80,9 @@ export var Controller = Ember.Controller.extend({
     },
 
     inlinePickerConf : {
-
+        date       : new Date(),
+        showTime   : true,
+        inlineMode : true
     },
 
 
