@@ -196,8 +196,24 @@
     </div>
 </div>
 
+<div class="tb">
+    <div class="row">
+        <div class="logs">
+            <h4>Showen immediately</h4>
+            <p>The calendar will be created without input field and will be immediately shown right after creation.</p>
+                {{datetime-picker
+                    date=inlinePickerConf.date
+                    showTime=inlinePickerConf.showTime
+                    showSeconds=inlinePickerConf.showSeconds
+                    hours24format=inlinePickerConf.hours24format
+                    minutesStep=inlinePickerConf.minutesStep
+                    secondsStep=inlinePickerConf.inlineMode
+                    inlineMode=inlinePickerConf.inlineMode
+                }}
+                <p>Date is: {{inlinePickerConf.date}}</p>
+        </div>
+    </div>
+</div>
+
 </div>
 </section>
-
-
-

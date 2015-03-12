@@ -1,11 +1,11 @@
 var Picker =
 
 Ember.DatetimepickerComponent = Ember.Component.extend({
-    layout : Ember.Handlebars.compile('{{input type="text"}}<i {{action "clear"}}></i>'),
+    layout : Ember.Handlebars.compile('{{#if inlineMode}}{{input type="hidden"}}{{else}}{{input type="text"}}<i {{action "clear"}}></i>{{/if}}'),
 
     classNames : ['datetime-picker'],
 
-    classNameBindings : ['clearButton:datetime-picker-clear-allowed'],
+    classNameBindings : ['clearButton:datetime-picker-clear-allowed', 'inlineMode:inline-mode'],
 
 
     attributeBindings : ['date', 'minDate', 'maxDate'],
@@ -74,7 +74,8 @@ Ember.DatetimepickerComponent = Ember.Component.extend({
             opts = {
                 field          : input[0],
                 container      : ignoreContainer ? void 0 : elem[0],
-                setDefaultDate : true
+                setDefaultDate : true,
+                bound          : !this.get('inlineMode')
             },
             i18n = this.get('i18n'),
             position = this.getWithDefault('position', ''),
@@ -201,4 +202,3 @@ Ember.onLoad('Ember.Application', function(Application) {
 });
 
 export default Picker;
-
