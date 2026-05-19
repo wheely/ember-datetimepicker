@@ -1,6 +1,7 @@
 {
   "name": "ember-datetimepicker",
   "version": "0.1.17",
+  "description": "Ember datetimepicker based on pikadaytime (DEPRECATED: this package is archived and no longer maintained)",
   "authors": [
     "Dmitry (dio) Levashov <dio@std42.ru>"
   ],

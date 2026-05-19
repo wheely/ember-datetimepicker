@@ -1,7 +1,9 @@
 {
   "name": "ember-datetimepicker",
   "version": "0.1.17",
-  "description": "Ember datetimepicker based on pikadaytime",
+  "private": true,
+  "deprecated": "This package is archived and no longer maintained.",
+  "description": "Ember datetimepicker based on pikadaytime (DEPRECATED: this package is archived and no longer maintained)",
   "main": "index.js",
   "scripts": {
     "postinstall": "bower install",
